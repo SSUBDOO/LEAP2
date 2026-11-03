@@ -1,0 +1,30 @@
+LEAPMOTOR LIVE CALCULATOR
+
+1. Extract leapmotor-live-update.zip.
+2. Open https://github.com/SSUBDOO/leap
+3. Choose Add file > Upload files.
+4. Upload all five files to the repository root (the same level as the existing index.html):
+   index.html
+   app.js
+   style.css
+   live.js
+   live.css
+5. Commit changes. Keep the existing assets folder.
+6. After the Vercel deployment finishes, refresh the portal.
+
+Do not upload the ZIP itself to GitHub. Upload the five extracted files.
+
+LIVE USE
+The customer presentation is on the left. Controls are on the right.
+Use Buka paparan to open a separate customer window. Capture that window in your livestream software. Keep the control window open in the same browser; changes sync between the two windows.
+On a phone, the controls appear below the customer presentation.
+
+PRICING
+B10 EZ5: RM4,000 Year End Bonus reduces vehicle price to RM114,800. Insurance Coverage RM4,000 is deducted from OTR after fees and insurance.
+C10: RM34,000 rebate, complimentary 7kW wallbox and tinted.
+The other existing quotation settings and demo options are retained.
+
+LATEST PRICE LIST
+The base price table matches the supplied price sheets in this exact order: Selling Price, Registration Fee, Ownership Endorsement Fee, 1 Year Road Tax, EV Plate Fee, On The Road Without Insurance, Recommended Sum to Insure. Use the Individual / Company buttons in the right panel. Only the selected price column is shown on the customer display. C10 inspection fee is removed. Campaign deductions follow the base price table.
+B10 base OTR without insurance: RM119,480 individual / RM119,680 company. Recommended sum to insure: RM119,000 for both.
+C10 base OTR without insurance: RM159,680 individual / RM159,880 company. Recommended sum to insure: RM159,000 individual / RM160,000 company.
