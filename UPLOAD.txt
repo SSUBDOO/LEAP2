@@ -3,16 +3,17 @@ LEAPMOTOR LIVE CALCULATOR
 1. Extract leapmotor-live-update.zip.
 2. Open https://github.com/SSUBDOO/leap
 3. Choose Add file > Upload files.
-4. Upload all five files to the repository root (the same level as the existing index.html):
+4. Upload these five files AND the assets folder to the repository root (the same level as the existing index.html):
    index.html
    app.js
    style.css
    live.js
    live.css
-5. Commit changes. Keep the existing assets folder.
+   assets/ (folder containing all car images and logo)
+5. Commit changes. Merge/replace the supplied images inside the existing assets folder.
 6. After the Vercel deployment finishes, refresh the portal.
 
-Do not upload the ZIP itself to GitHub. Upload the five extracted files.
+Do not upload the ZIP itself to GitHub. Upload the five extracted files and the assets folder.
 
 LIVE USE
 The customer presentation is on the left. Controls are on the right.
