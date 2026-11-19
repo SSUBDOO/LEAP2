@@ -87,3 +87,8 @@ body>header{position:sticky;top:0;z-index:20;background:#fff}
 .hero .kinetik-photo .car-image{height:210px;display:flex;align-items:center;justify-content:center}
 .hero .kinetik-photo .car-image img{height:205px;width:100%;object-fit:contain;transform:none}
 @media(max-width:800px){.hero .kinetik-photo .car-image,.hero .kinetik-photo .car-image img{height:165px}.kinetik-warranty b{font-size:15px}}
+
+/* Show realistic bodykit photographs with automotive-focused crops */
+.hero .kinetik-photo .car-image img{height:210px;width:100%;object-fit:cover;object-position:center 51%;transform:none}
+@media(max-width:800px){.hero .kinetik-photo .car-image img{height:165px;object-position:center 50%}}
+.kinetik-preview-car img{object-fit:cover!important;object-position:center 53%!important}
