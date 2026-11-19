@@ -65,3 +65,25 @@ body>header{position:sticky;top:0;z-index:20;background:#fff}
 
 .otr-fees{margin-top:16px}.calculation-total{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:14px 0 18px;padding:14px 0;border-top:1px solid #ccd6c4;border-bottom:1px solid #ccd6c4;background:transparent;color:var(--dark)}.calculation-total span{font-size:12px;font-weight:700}.calculation-total b{font-size:22px;white-space:nowrap}.loan-inputs{margin-top:4px}
 
+
+/* November 2026 campaign & limited B10 Kinetik Edition */
+.edition-control{margin:16px 0 10px;display:grid;gap:7px}
+.edition-control label{font-size:10px;font-weight:800;letter-spacing:1.25px}
+.edition-control select{padding:12px 14px;max-width:100%;border:1px solid #cbd8e0;border-radius:10px;background:#eef6fa;font-weight:700;color:#17394f}
+.kinetik-details{padding:17px;margin:12px 0 18px;background:linear-gradient(145deg,#eaf2f8,#f7fbff);color:#183b57;border:1px solid #bfd3e0;border-radius:15px}
+.kinetik-tag{font-size:10px;letter-spacing:1px;color:#346788;font-weight:900}
+.kinetik-details h3{margin:8px 0 6px;font-size:21px}
+.kinetik-price{font-size:23px;color:#144e75}
+.kinetik-details>p{line-height:1.5;margin:8px 0}
+.kinetik-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin:13px 0}
+.kinetik-grid span{font-size:11px;padding:7px 9px;border:1px solid #ccdce6;background:#fff;border-radius:7px}
+.kinetik-warranty{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.kinetik-warranty span{text-align:center;background:#fff;border:1px solid #d1e1e9;padding:8px 4px;border-radius:9px;font-size:10px;line-height:1.45}
+.kinetik-warranty b{display:block;color:#226690;font-size:17px}
+.kinetik-note{font-size:11px;line-height:1.55;color:#4d697e}
+.kinetik-gallery{margin-top:12px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.kinetik-gallery p{grid-column:1/-1}
+.kinetik-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px}
+.hero .kinetik-photo .car-image{height:210px;display:flex;align-items:center;justify-content:center}
+.hero .kinetik-photo .car-image img{height:205px;width:100%;object-fit:contain;transform:none}
+@media(max-width:800px){.hero .kinetik-photo .car-image,.hero .kinetik-photo .car-image img{height:165px}.kinetik-warranty b{font-size:15px}}
