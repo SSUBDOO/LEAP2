@@ -31,7 +31,7 @@ const primaryControls=document.createElement('section');primaryControls.classNam
 vehicleControls.after(primaryControls);
 primaryControls.append(quick,document.querySelector('.loan-inputs'),$('insurance').closest('.form-grid'),financeControls);
 const packageControl=document.createElement('label');packageControl.id='livePackageField';packageControl.className='live-package';
-packageControl.innerHTML='Pakej B10<select id="livePackage"><option value="ez5">EZ 5</option><option value="cash">No Wallbox * No Credit</option></select>';
+packageControl.innerHTML='Pakej B10<select id="livePackage"><option value="ez5">EZ Five</option><option value="cash">Ala Carte</option></select>';
 primaryControls.prepend(packageControl);
 const liveRegistration=document.querySelector('.customer-registration');liveRegistration.classList.add('live-registration');primaryControls.prepend(liveRegistration);
 liveRegistration.querySelector('label').textContent='JENIS PENDAFTARAN';
@@ -52,14 +52,14 @@ try{liveChannel=new BroadcastChannel('leapmotor-live-display');liveChannel.onmes
 function refreshLive(){
   if(displayOnly)return;
   $('livePackageField').hidden=model!=='B10'||isDemo();$('livePackage').value=$('package').value;
-  const c=calc(),m=models[model],p=offer(),cash=cashPurchase();
+  const c=calc(),m=currentVehicle(),p=offer(),cash=cashPurchase();
   const priceRows=priceListRows();
-  const rows=[['Vehicle rebate','− '+money(c.rebate)],['Insurance after NCD',money(c.insurance)],...(c.coverage?[['Insurance Coverage · OTR','− '+money(c.coverage)]]:[]),['Final OTR',money(c.otr)],...(!cash?[['Deposit',money(c.down)],['Loan amount',money(c.principal)]]:[])];
+  const rows=[['Cash / vehicle rebate','− '+money(c.rebate)],...(c.extras?[['22 kW wallbox upgrade','+ '+money(c.extras)]]:[]),['Insurance after NCD',money(c.insurance)],...(c.coverage?[['Insurance Coverage · OTR','− '+money(c.coverage)]]:[]),['Final OTR',money(c.otr)],...(!cash?[['Deposit',money(c.down)],['Loan amount',money(c.principal)]]:[])];
   const priceColumn=registration==='Company'?2:1;
   liveRegistration.querySelectorAll('button').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.reg===registration)));
   const priceTable='<table class="live-price-table"><thead><tr><th scope="col">'+model+' · PENINSULAR MALAYSIA</th><th scope="col" class="chosen">'+(registration==='Company'?'COMPANY':'INDIVIDUAL')+' (RM)</th></tr></thead><tbody>'+priceRows.map((row,i)=>'<tr class="'+(i===5?'price-otr':'')+'"><th scope="row">'+row[0]+'</th><td>'+row[priceColumn].toLocaleString('en-MY',{minimumFractionDigits:2,maximumFractionDigits:2})+'</td></tr>').join('')+'</tbody></table>';
 
-  const benefits=isDemo()?'Demo unit · Tiada promosi tambahan':p?(p.name+' · Insurance Coverage RM4,000'+($('package').value==='ez5'?' · Year End Bonus RM4,000':'')+'<br>'+esc(p.wallbox)+' · '+esc(p.charging)+'<br>Tint RM1,600'+($('keyFob').value==='Yes'?' · Key fob RM500':'')):'Rebat RM34,000 · Percuma wallbox 7kW & tinted';
+  const benefits=isDemo()?'Demo unit · Tiada promosi tambahan':p?(isKinetik()?'B10 Kinetik Edition · RM129,800 MSRP · 6-year bodykit warranty · 20 units for 2026<br>':'')+p.name+' · Year End Bonus RM4,000 · Insurance coverage RM4,000 · Promo value '+money(p.value)+'<br>'+($('package').value==='ez5'?'Included: 22 kW wallbox, tint, credit, key fob':'Ala Carte: cash equivalents for tint / wallbox / credit / key fob'):'C10 · Cash rebate RM34,000 + Year End Bonus RM5,100<br>'+(c10Benefit()==='wallbox'?'Free 7 kW wallbox':c10Benefit()==='tint'?'Free tint':'RM1,000 cash alternative')+(c.extras?' · 22 kW upgrade +RM1,488':'');
   const photo=view==='exterior'?m.colours[colour][2]:interiorChoice().image;
   livePreview.innerHTML='<div class="preview-brand"><img src="assets/leapmotor-logo.png" alt="Leapmotor"><span>MALAYSIA · 100% ELECTRIC</span></div><p class="preview-eyebrow">KIRAAN PEMBIAYAAN KENDERAAN</p><h1>Leapmotor '+model+' <span>'+esc(m.variant)+'</span></h1><p class="preview-colour">'+esc(m.colours[colour][0])+' · '+esc(interiorChoice().name)+' interior</p><div class="preview-car"><img src="'+esc(photo)+'" alt="Leapmotor '+model+'"></div><div class="monthly-hero"><div><small>'+(cash?'Jumlah OTR':'Anggaran ansuran bulanan')+'</small><strong>'+money(cash?c.otr:c.monthly)+'</strong><span>'+(cash?'Pembelian tunai':c.years+' tahun · '+c.rate.toFixed(2)+'% p.a.')+'</span></div><div class="advisor-card"><b>'+esc($('advisor').value||'HILMI')+'</b><span>Leapmotor Sales Advisor</span></div></div><div class="preview-benefits"><b>PROMO & MANFAAT</b><p>'+benefits.replaceAll('<br>',' · ')+'</p></div>'+priceTable+'<dl class="preview-summary">'+rows.map(([label,value])=>'<div><dt>'+label+'</dt><dd>'+value+'</dd></div>').join('')+'</dl>'+(!cash?'<div class="tenure-cards">'+[9,7,5].map(years=>'<div class="'+(years===c.years?'selected':'')+'"><b>'+years+' Tahun</b><span>'+money(c.principal*(1+c.rate/100*years)/(years*12))+' <small>/bulan</small></span></div>').join('')+'</div>':'')+'<div class="preview-contact"><span>WhatsApp untuk pertanyaan</span><b>'+esc($('advisorPhone').value)+'</b></div><p class="preview-disclaimer">Anggaran sahaja. Tertakluk kepada pengesahan dealer, kelayakan kempen dan kelulusan bank.</p>';
   const heroBand=document.createElement('div');heroBand.className='preview-hero-band';
