@@ -104,7 +104,7 @@ function refreshLive(){
 }
 $('openDisplay').onclick=()=>window.open(location.pathname+'?display=1','leapmotor-display','width=850,height=1050');
 document.addEventListener('input',()=>refreshLive());
-document.addEventListener('click',()=>refreshLive());
+document.addEventListener('click',event=>{if(event.target.closest('#livePreview'))return;refreshLive()});
 if(displayOnly){
   livePreview.innerHTML='<p class="display-wait">Menunggu panel kawalan… Buka paparan melalui butang “Buka paparan” pada panel utama.</p>';
   liveChannel?.postMessage({type:'ready'});
