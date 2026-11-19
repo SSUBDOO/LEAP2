@@ -53,11 +53,15 @@ function refreshLive(){
   if(displayOnly)return;
   $('livePackageField').hidden=model!=='B10'||isDemo();$('livePackage').value=$('package').value;
   const c=calc(),m=currentVehicle(),p=offer(),cash=cashPurchase();
-  const priceRows=priceListRows();
+  // Highlight promotional selling price after discounts, before adding insurance and OTR fees.
+  // Ala Carte's published effective price includes the B10 insurance coverage campaign value.
+  const effectivePromoPrice=Math.max(0,c.net-(!isDemo()&&model==='B10'&&$('package').value==='cash'?c.coverage:0));
+  const promoPriceLabel='HARGA SELEPAS REBATE · SEBELUM INSURANCE';
+  const priceRows=[...priceListRows(),[promoPriceLabel,effectivePromoPrice,effectivePromoPrice]];
   const rows=[['Cash / vehicle rebate','− '+money(c.rebate)],...(c.extras?[['22 kW wallbox upgrade','+ '+money(c.extras)]]:[]),['Insurance after NCD',money(c.insurance)],...(c.coverage?[['Insurance Coverage · OTR','− '+money(c.coverage)]]:[]),['Final OTR',money(c.otr)],...(!cash?[['Deposit',money(c.down)],['Loan amount',money(c.principal)]]:[])];
   const priceColumn=registration==='Company'?2:1;
   liveRegistration.querySelectorAll('button').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.reg===registration)));
-  const priceTable='<table class="live-price-table"><thead><tr><th scope="col">'+model+' · PENINSULAR MALAYSIA</th><th scope="col" class="chosen">'+(registration==='Company'?'COMPANY':'INDIVIDUAL')+' (RM)</th></tr></thead><tbody>'+priceRows.map((row,i)=>'<tr class="'+(i===5?'price-otr':'')+'"><th scope="row">'+row[0]+'</th><td>'+row[priceColumn].toLocaleString('en-MY',{minimumFractionDigits:2,maximumFractionDigits:2})+'</td></tr>').join('')+'</tbody></table>';
+  const priceTable='<table class="live-price-table"><thead><tr><th scope="col">'+model+' · PENINSULAR MALAYSIA</th><th scope="col" class="chosen">'+(registration==='Company'?'COMPANY':'INDIVIDUAL')+' (RM)</th></tr></thead><tbody>'+priceRows.map((row,i)=>'<tr class="'+(row[0]===promoPriceLabel?'price-otr':'')+'"><th scope="row">'+row[0]+'</th><td>'+row[priceColumn].toLocaleString('en-MY',{minimumFractionDigits:2,maximumFractionDigits:2})+'</td></tr>').join('')+'</tbody></table>';
 
   const benefits=isDemo()?'Demo unit · Tiada promosi tambahan':p?(isKinetik()?'B10 Kinetik Edition · RM129,800 MSRP · 6-year bodykit warranty · 20 units for 2026<br>':'')+p.name+' · Year End Bonus RM4,000 · Insurance coverage RM4,000 · Promo value '+money(p.value)+'<br>'+($('package').value==='ez5'?'Included: 22 kW wallbox, tint, credit, key fob':'Ala Carte: cash equivalents for tint / wallbox / credit / key fob'):'C10 · Cash rebate RM34,000 + Year End Bonus RM5,100<br>'+(c10Benefit()==='wallbox'?'Free 7 kW wallbox':c10Benefit()==='tint'?'Free tint':'RM1,000 cash alternative')+(c.extras?' · 22 kW upgrade +RM1,488':'');
   const photo=view==='exterior'?m.colours[colour][2]:interiorChoice().image;
