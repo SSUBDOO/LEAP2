@@ -18,3 +18,21 @@ body:not(.display-only)>header{height:54px}body:not(.display-only)>main{padding:
 @media(min-width:781px) and (max-height:820px){.live-price-table{font-size:11px}.live-price-table th,.live-price-table td{padding:4px 7px}.live-price-table thead th{font-size:9px}.preview-car,.preview-car img{height:155px}.preview-car img{max-width:395px}.live-price-table+.preview-summary>div{padding:3px 0;font-size:11px}.live-price-table+.preview-summary dd{font-size:12px}.preview-benefits{padding:4px 8px}.preview-benefits p{font-size:10px}.tenure-cards{margin:6px 0}.tenure-cards>div{padding:5px 9px}.preview-disclaimer{font-size:8px}.preview-contact{padding:7px 10px}}
 @media(max-width:780px){.live-price-table{font-size:10px}.live-price-table th,.live-price-table td{padding:6px 4px}.live-price-table thead th{font-size:8px}.live-price-table th:first-child{width:46%}}
 @media(min-width:781px) and (max-height:740px){body:not(.display-only)>header{height:46px}body:not(.display-only)>main{padding-top:10px}.live-preview{padding-top:8px;padding-bottom:8px}}
+
+/* November 2026 promotional headline and Kinetik controls */
+.preview-promo-headline{font-size:12px;font-weight:850;color:#225e8b;background:#edf5fa;padding:8px 11px;border-radius:9px;margin:4px 0 7px}
+.live-controls .edition-control{margin:11px 0}
+.live-controls .edition-control label{color:#cde0cb}
+.live-controls .edition-control select{background:#214236;color:#fff;border-color:#476754}
+.live-controls .kinetik-details{background:#1b392e;border-color:#496451;color:#f0f6f2}
+.live-controls .kinetik-details .kinetik-tag{color:#a9d0e7}
+.live-controls .kinetik-details .kinetik-price{color:#ffffff}
+.live-controls .kinetik-details .kinetik-grid span{background:#214739;border-color:#4c6d57;color:#e7f0e7}
+.live-controls .kinetik-details .kinetik-warranty span{background:#214739;border-color:#4c6d57;color:#e7f0e7}
+.live-controls .kinetik-details .kinetik-warranty b{color:#b4d6f2}
+.live-controls .kinetik-details .kinetik-note{color:#b9d0c1}
+.live-controls .kinetik-details .kinetik-gallery img{border:1px solid #547260}
+.live-controls #c10BenefitsField,.live-controls #c10UpgradeField{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.live-controls #c10UpgradeField{display:block;font-size:12px;color:#f2f6ee}
+.live-controls #c10UpgradeNote{display:block;font-size:11px;color:#cbdcbb}
+@media(max-width:780px){.preview-promo-headline{font-size:10px}}
